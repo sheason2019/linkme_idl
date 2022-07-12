@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package basic;
+
+service Basic {
+  rpc Touch (TouchRequest) returns (TouchResponse) {}
+}
+
+message TouchRequest {}
+
+message TouchResponse {
+  string service_version = 1;
+  bool allow_regist = 2;
+  bool allow_guest_view = 3;
+}
