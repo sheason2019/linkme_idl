@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package config;
+
+service config {
+  rpc AdminLogin(AdminLoginRequest) returns (AdminLoginResponse) {}
+}
+
+// Admin用户输入密码以登录
+message AdminLoginRequest {
+  string password = 1;
+}
+
+// 登录后将Token返还给前端，使用Token可持续登录
+message AdminLoginResponse {
+  string token = 1;
+}
