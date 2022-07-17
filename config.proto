@@ -3,8 +3,16 @@ syntax = "proto3";
 package config;
 
 service config {
+  // 管理员登录
   rpc AdminLogin(AdminLoginRequest) returns (AdminLoginResponse) {}
+  // 权限检查
   rpc AuthCheck(AuthCheckRequest) returns (AuthCheckResponse) {}
+  // 获取允许的数据库类型
+  rpc GetAllowDatabaseType(GetAllowDatabaseTypeRequest) returns (GetAllowDatabaseTypeResponse) {}
+  // 请求连接指定的数据库
+  rpc ConnectDatabase(ConnectDatabaseRequest) returns (ConnectDatabaseResponse) {}
+  // 获取数据库连接信息
+  rpc GetDatabaseInfo(GetDatabaseInfoRequest) returns (GetDatabaseInfoResponse) {}
 }
 
 // Admin用户输入密码以登录
@@ -24,4 +32,48 @@ message AuthCheckRequest {
 // 返回布尔类型表示是否拥有相应的权限
 message AuthCheckResponse {
   bool allow = 1;
+}
+
+// 获取允许的数据库类型无需向服务端发送参数
+message GetAllowDatabaseTypeRequest {}
+// 返回字符串数组形式的数据库类型可选项
+message GetAllowDatabaseTypeResponse {
+  repeated string allowDatabaseTypes = 1;
+}
+
+// 发送连接数据库所需要的信息
+message ConnectDatabaseRequest {
+  // 数据库类型，即GetAllowDatabaseType接口返回给前端的内容
+  string type = 1;
+  // host地址
+  string host = 2;
+  // 端口
+  int32 port = 3;
+  // 登录数据库的用户名
+  string username = 4;
+  // 登录数据库使用的密码
+  string password = 5;
+  // 登录到指定的数据库
+  string database = 6;
+}
+// 返回值的内容是连接失败的原因，这里会根据RPC请求的Error值进行判断，如果有Error则显示失败的原因，如果没有返回Error则视为连接成功
+message ConnectDatabaseResponse {
+  string reason = 1;
+}
+
+// 获取DatabaseInfo的请求
+message GetDatabaseInfoRequest {
+  // 是否请求全部信息
+  bool detail = 1;
+}
+// 返回的DatabaseInfo内容
+message GetDatabaseInfoResponse {
+  // 是否为已连接状态
+  bool connected = 1;
+  // 数据库的基本信息，下面这一部分当detail为true时再返回
+  string host = 2;
+  int32 port = 3;
+  string username = 4;
+  string database = 5;
+  string password = 6;
 }
