@@ -13,6 +13,8 @@ service config {
   rpc ConnectDatabase(ConnectDatabaseRequest) returns (ConnectDatabaseResponse) {}
   // 获取数据库连接信息
   rpc GetDatabaseInfo(GetDatabaseInfoRequest) returns (GetDatabaseInfoResponse) {}
+  // 断开数据库连接
+  rpc DisconnectDatabase(DisconnectDatabaseRequest) returns (DisconnectDatabaseResponse) {}
 }
 
 // Admin用户输入密码以登录
@@ -77,3 +79,9 @@ message GetDatabaseInfoResponse {
   string database = 5;
   string password = 6;
 }
+
+/** 断开数据库连接的请求和响应，由于数据库连接是使用单例模式存储的，因此这里不需要添加什么参数
+*   如果以后使用多个数据库连接实例来管理数据库，可以通过ID标识符来移除指定的数据库连接
+*/
+message DisconnectDatabaseRequest {}
+message DisconnectDatabaseResponse {}
