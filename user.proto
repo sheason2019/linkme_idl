@@ -12,6 +12,12 @@ message GetUserListSearchParams {
   string nickname = 3;
 }
 
+message UserInfo {
+  string username = 1;
+  string nickname = 2;
+  int32 userid = 3;
+}
+
 message GetUserListRequest {
   int32 page = 1;
   int32 pageNum = 2;
@@ -19,7 +25,7 @@ message GetUserListRequest {
 }
 
 message GetUserListResponse {
-  string username = 1;
-  string nickname = 2;
-  int32 userid = 3;
+  repeated UserInfo userList = 1;
 }
+
+
