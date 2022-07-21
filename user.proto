@@ -8,28 +8,28 @@ service User {
 
 message GetUserListSearchParams {
   string username = 1;
-  int32 userId = 2;
+  int32 user_id = 2;
   string nickname = 3;
 }
 
 message UserInfo {
   string username = 1;
   string nickname = 2;
-  int32 userid = 3;
+  int32 user_id = 3;
 }
 
 message GetUserListRequest {
   // 请求的目标页面
   int32 page = 1;
   // 每个页面包含的内容条数
-  int32 pageSize = 2;
+  int32 page_size = 2;
   // 用来搜索的字段
   GetUserListSearchParams searchParams = 3;
 }
 
 message GetUserListResponse {
   // 用户列表
-  repeated UserInfo userList = 1;
+  repeated UserInfo user_list = 1;
   // User表中所有可见信息的总条数
   int32 count = 2;
 }
