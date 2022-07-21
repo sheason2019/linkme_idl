@@ -19,13 +19,19 @@ message UserInfo {
 }
 
 message GetUserListRequest {
+  // 请求的目标页面
   int32 page = 1;
-  int32 pageNum = 2;
+  // 每个页面包含的内容条数
+  int32 pageSize = 2;
+  // 用来搜索的字段
   GetUserListSearchParams searchParams = 3;
 }
 
 message GetUserListResponse {
+  // 用户列表
   repeated UserInfo userList = 1;
+  // User表中所有可见信息的总条数
+  int32 count = 2;
 }
 
 
