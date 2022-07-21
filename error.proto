@@ -3,8 +3,13 @@ syntax = "proto3";
 package error;
 
 enum ErrorCode {
-  Default = 0;
+  DEFAULT = 0;
+  /** 100-200 错误码区段留给用户相关的错误使用 */
+  // 表示未登录和登录信息有误
+  USER_AUTH_ERROR = 101;
+  // 表示用户权限不足
+  USER_LIMIT_ERROR = 102;
   /** 200-300 错误码区段留给Linkme配置相关的错误使用 */
-  DatabaseUnlinkedError = 201;
-  DatabaseTimeoutError = 202;
+  DATABASE_UNLINED_ERROR = 201;
+  DATABASE_TIMEOUT_ERROR = 202;
 }
