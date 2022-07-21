@@ -24,7 +24,7 @@ message GetUserListRequest {
   // 每个页面包含的内容条数
   int32 page_size = 2;
   // 用来搜索的字段
-  GetUserListSearchParams searchParams = 3;
+  GetUserListSearchParams search_params = 3;
 }
 
 message GetUserListResponse {
