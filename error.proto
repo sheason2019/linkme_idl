@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package error;
+
+enum ErrorCode {
+  Default = 0;
+  /** 200-300 错误码区段留给Linkme配置相关的错误使用 */
+  DatabaseUnlinkedError = 201;
+  DatabaseTimeoutError = 202;
+}
