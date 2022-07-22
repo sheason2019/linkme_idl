@@ -29,7 +29,7 @@ message GetUserListRequest {
 
 message GetUserListResponse {
   // 用户列表
-  repeated UserInfo user_list = 1;
+  repeated UserInfo users = 1;
   // User表中所有可见信息的总条数
   int32 count = 2;
 }
