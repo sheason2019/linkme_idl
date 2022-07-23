@@ -4,6 +4,7 @@ package user;
 
 service User {
   rpc GetUserList (GetUserListRequest) returns (GetUserListResponse) {}
+  rpc RegistUser (RegistUserRequest) returns (RegistUserResponse) {}
 }
 
 message GetUserListSearchParams {
@@ -33,5 +34,12 @@ message GetUserListResponse {
   // User表中所有可见信息的总条数
   int32 count = 2;
 }
+
+message RegistUserRequest {
+  string username = 1;
+  string password = 2;
+  string nickname = 3;
+}
+message RegistUserResponse {}
 
 
