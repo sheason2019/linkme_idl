@@ -5,6 +5,7 @@ package user;
 service User {
   rpc GetUserList (GetUserListRequest) returns (GetUserListResponse) {}
   rpc RegistUser (RegistUserRequest) returns (RegistUserResponse) {}
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse) {}
 }
 
 message GetUserListSearchParams {
@@ -42,4 +43,8 @@ message RegistUserRequest {
 }
 message RegistUserResponse {}
 
+message DeleteUserRequest {
+  int32 id = 1;
+}
+message DeleteUserResponse {}
 
