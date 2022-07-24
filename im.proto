@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package im;
+
+service IMService {
+  rpc UserLogin(UserLoginRequest) returns (UserLoginResponse) {}
+}
+
+message UserLoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message UserLoginResponse {
+  string user_authorzation_token = 1;
+}
